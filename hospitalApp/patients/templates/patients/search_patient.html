@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>search</title>
+</head>
+<body>
+    
+    <h2>Search Patient by ID</h2>
+<form method="get" action="{% url 'search_patient' %}">
+    <label for="patient_id">Patient ID Number:</label>
+    <input type="text" id="patient_id" name="patient_id" placeholder="Enter patient ID number">
+    <button type="submit">Search</button>
+</form>
+
+{% if patient %}
+    <h3>Patient Details</h3>
+    <p>Name: {{ patient.name }}</p>
+    <p>Age: {{ patient.age }}</p>
+    <p>Mobile: {{ patient.mobile_number }}</p>
+
+    <h4>Appointment History</h4>
+    {% if appointments %}
+        <ul>
+            {% for appointment in appointments %}
+                <li>
+                    <strong>Date:</strong> {{ appointment.date }} <br>
+                    <strong>Description of Illness:</strong> {{ appointment.description_of_illness }} <br>
+                    <strong>BP:</strong> {{ appointment.blood_pressure }} <br>
+                    <strong>Temperature:</strong> {{ appointment.body_temperature }} <br>
+                    <strong>Diagnosis:</strong> {{ appointment.diagnosis }} <br>
+                    <strong>Medicine:</strong> {{ appointment.medicine }} <br>
+                    <strong>Lab Reports:</strong> {{ appointment.lab_reports }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No appointment history found for this patient.</p>
+    {% endif %}
+{% elif query %}
+    <p>No patient found with that ID number.</p>
+{% endif %}
+
+
+<a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+    </style>
+
+    <title>Sanjeevani clinic</title>
+
+</head>
+<body>
+    <header>
+        <h1>Sanjeevani clinic</h1>
+    </header>
+
+    <div class="container">
+        <h2>Welcome to the Hospital Management System</h2>
+        <p>Please select one of the options below:</p>
+        <a href="{% url 'add_patient' %}" class="link-btn">Add Patient</a>
+        <a href="{% url 'add_appointment' patient_id=1 %}" class="link-btn">Add Appointment</a>
+        <a href="{% url 'search_patient' %}" class="link-btn">Search Patient</a>
+        <!-- You can add more links as needed -->
+    </div>
+</body>
+</html>
